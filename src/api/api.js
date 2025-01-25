@@ -1,5 +1,5 @@
 export const API_URL = 'https://api.themoviedb.org/3';
-export const API_KEY = 'your_api_key'; // Заміни на свій API ключ
+export const API_KEY = '9b5bb86c36af8e33da652524366b0a8e';
 export const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
 export const fetchPopularMovies = async () => {
@@ -30,4 +30,11 @@ export const searchMovies = async (query) => {
   const response = await fetch(`${API_URL}/search/movie?api_key=${API_KEY}&query=${query}&language=en-US&page=1`);
   if (!response.ok) throw new Error('Failed to search movies');
   return response.json();
+};
+
+export const fetchImageBaseURL = async () => {
+  const response = await fetch(`${API_URL}/configuration?api_key=${API_KEY}`);
+  if (!response.ok) throw new Error('Failed to fetch configuration');
+  const data = await response.json();
+  return data.images.secure_base_url;
 };
