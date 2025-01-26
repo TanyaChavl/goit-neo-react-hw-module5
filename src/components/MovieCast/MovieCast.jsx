@@ -15,16 +15,16 @@ export const MovieCast = () => {
       .catch(err => setError(err.message));
   }, [movieId]);
 
-  if (error) return <p>{error}</p>;
-  if (!cast.length) return <p>No cast information available.</p>;
+  if (error) return <p className="cast-error">{error}</p>;
+  if (!cast.length) return <p className="not-found">No cast information available.</p>;
 
   return (
-    <ul>
+    <ul className="cast-list">
       {cast.map(({ id, name, character, profile_path }) => (
-        <li key={id}>
+        <li key={id} className="cast-item">
           {profile_path && <img src={`${IMAGE_BASE_URL}${profile_path}`} alt={name} width="100" />}
-          <p>{name}</p>
-          <p>Character: {character}</p>
+          <p className="cast-name">{name}</p>
+          <p className="cast-character">Character: {character}</p>
         </li>
       ))}
     </ul>

@@ -14,9 +14,9 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Trending today</h1>
-      {error ? <p>{error}</p> : <MovieList movies={movies} />}
+    <div className="home">
+      <h1 className="home-header">Trending today</h1>
+      {error ? <p className="home-error">{error}</p> : <MovieList movies={movies} />}
     </div>
   );
 };

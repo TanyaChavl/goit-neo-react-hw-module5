@@ -16,17 +16,18 @@ export const MoviesPage = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSearch}>
+    <div className="movies">
+      <form onSubmit={handleSearch} className="movies-search">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search movies..."
+          className="movies-input"
         />
-        <button type="submit">Search</button>
+        <button type="submit" className="search-button">Search</button>
       </form>
-      {error ? <p>{error}</p> : <MovieList movies={movies} />}
+      {error ? <p className="movies-error">{error}</p> : <MovieList movies={movies} />}
     </div>
   );
 };

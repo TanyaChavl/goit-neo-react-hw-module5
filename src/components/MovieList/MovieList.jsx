@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export const MovieList = ({ movies }) => (
-  <ul>
+  <ul className="movies-lst">
     {movies.map(({ id, title }) => (
-      <li key={id}>
-        <Link to={`/movies/${id}`}>{title}</Link>
+      <li key={id} className="movie-item">
+        <Link to={`/movies/${id}`} className="movie-link">{title}</Link>
       </li>
     ))}
   </ul>

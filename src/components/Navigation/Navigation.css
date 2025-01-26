@@ -1,0 +1,25 @@
+.navigation {
+    display: flex;
+    gap: 16px;
+    background-color: #f8f9fa;
+    padding: 16px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #050505;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navigation a:hover {
+    color: #d8531a;
+}
+
+.navigation a.active {
+    color: #d8531a;
+    font-weight: 700;
+    border-bottom: 2px solid #d8531a;
+}

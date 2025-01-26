@@ -19,23 +19,32 @@ export const MovieDetailsPage = () => {
       .catch(err => setError(err.message));
   }, [movieId]);
 
-  if (error) return <p>{error}</p>;
-  if (!movie || !imageBaseURL) return <p>Loading...</p>;
+  if (error) return <p className="movie-error">{error}</p>;
+  if (!movie || !imageBaseURL) return <p className="movie-loader">Loading...</p>;
 
   return (
-    <div>
-      <button onClick={() => window.history.back()}>Go back</button>
-      <div>
+    <div className="movie-details">
+      <button onClick={() => window.history.back()} className="movie-button">Go back</button>
+      <div className="movie-poster">
         {movie.poster_path && (
           <img src={`${imageBaseURL}w500${movie.poster_path}`} alt={movie.title} width="300" />
         )}
-        <h1>{movie.title}</h1>
-        <p>{movie.overview}</p>
-        <p>User Score: {movie.vote_average * 10}%</p>
+        <div className="movie-text">
+          <h1 className="movie-title">{movie.title}</h1>
+          <p className="movie-text">User Score: {Math.round(movie.vote_average * 10)}%</p>
+          <h4>Overview</h4>
+          <p className="movie-text">{movie.overview}</p>
+          <h4>Genres</h4>
+          <p className="movie-text">
+            {movie.genres.map((genre) => genre.name).join(", ")}
+          </p>
+          
+        </div>
       </div>
-      <ul>
-        <li><Link to="cast">Cast</Link></li>
-        <li><Link to="reviews">Reviews</Link></li>
+      <h4 className="info-header">Additional information</h4>
+      <ul className="movie-list">
+        <li className="movie-list-item"><Link to="cast">Cast</Link></li>
+        <li className="movie-list-item"><Link to="reviews">Reviews</Link></li>
       </ul>
       <Outlet />
     </div>

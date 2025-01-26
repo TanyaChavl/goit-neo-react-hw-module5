@@ -14,15 +14,15 @@ export const MovieReviews = () => {
       .catch(err => setError(err.message));
   }, [movieId]);
 
-  if (error) return <p>{error}</p>;
-  if (!reviews.length) return <p>We don&apos;t have any reviews for this movie.</p>;
+  if (error) return <p className="review-error">{error}</p>;
+  if (!reviews.length) return <p className="not-found">We don&apos;t have any reviews for this movie.</p>;
 
   return (
-    <ul>
+    <ul className="reviews-list">
       {reviews.map(({ id, author, content }) => (
-        <li key={id}>
-          <p><strong>{author}:</strong></p>
-          <p>{content}</p>
+        <li key={id} className="review-item">
+          <p className="review-authot"><strong>{author}:</strong></p>
+          <p className="review-content">{content}</p>
         </li>
       ))}
     </ul>
